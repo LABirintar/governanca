@@ -63,4 +63,4 @@ export const runChat = async (message: string, audience: Audience): Promise<stri
         console.error("Gemini API error:", error);
         return "Desculpe, ocorreu um erro ao me comunicar com a IA. Por favor, tente novamente mais tarde.";
     }
-};
+}
