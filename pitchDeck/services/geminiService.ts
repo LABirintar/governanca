@@ -8,7 +8,7 @@ import { Audience, ChatMessage } from '../types';
 const API_KEY = "SUA_CHAVE_API_AQUI";
 
 let ai: GoogleGenAI;
-if (API_KEY && API_KEY !== "AIzaSyAjLpmKLGRcIVPRpNDh2KAcc8wowzaVbBk") {
+if (API_KEY && API_KEY !== "SUA_CHAVE_API_AQUI") {
     ai = new GoogleGenAI({ apiKey: API_KEY });
 } else {
     console.warn("API_KEY não foi configurada. A funcionalidade do Gemini API estará desativada.");
@@ -48,7 +48,7 @@ const getChat = (audience: Audience): Chat | null => {
 
 
 export const runChat = async (message: string, audience: Audience): Promise<string> => {
-    if (!API_KEY || API_KEY === "AIzaSyAjLpmKLGRcIVPRpNDh2KAcc8wowzaVbBk") {
+    if (!API_KEY || API_KEY === "SUA_CHAVE_API_AQUI") {
         return "A chave de API do Gemini não está configurada. Para ativar o chat, por favor, adicione sua chave de API no arquivo `services/geminiService.ts`.";
     }
     
