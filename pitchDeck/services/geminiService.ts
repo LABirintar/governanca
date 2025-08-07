@@ -8,7 +8,7 @@ import { Audience, ChatMessage } from '../types';
 const API_KEY = "SUA_CHAVE_API_AQUI";
 
 let ai: GoogleGenAI;
-if (API_KEY && API_KEY !== "SUA_CHAVE_API_AQUI") {
+if (API_KEY && API_KEY !== "AIzaSyAjLpmKLGRcIVPRpNDh2KAcc8wowzaVbBk") {
     ai = new GoogleGenAI({ apiKey: API_KEY });
 } else {
     console.warn("API_KEY não foi configurada. A funcionalidade do Gemini API estará desativada.");
