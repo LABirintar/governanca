@@ -1,4 +1,5 @@
 
+
 import React, { useState, useMemo } from 'react';
 import { Persona, SlideContent } from './types';
 import { COMMON_TRUNK, BIFURCATION_SLIDE, TRACKS, COLORS } from './constants';
@@ -112,7 +113,7 @@ const App: React.FC = () => {
         )}
 
         <div className="fixed bottom-4 right-4 z-50 flex space-x-4">
-          {!showBifurcation && slideIndex > 0 && (
+          {slideIndex > 0 && !isLastSlideOfTrack && (
             <button
               onClick={handlePrev}
               className="w-14 h-14 bg-[#aec5e7] text-white rounded-full shadow-lg flex items-center justify-center hover:bg-opacity-80 transition-transform duration-200 transform hover:scale-110"
