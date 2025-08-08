@@ -1,6 +1,5 @@
 {
-  "name": "LABirintar: Pitch Deck Interativo",
-  "description": "Um pitch deck interativo e sofisticado para a LABirintar, uma EdTech que está transformando a Escola em Tempo Integral no Brasil. A aplicação apresenta a visão, modelo de negócio e oportunidade da startup para diferentes públicos.",
-  "requestFramePermissions": [],
-  "prompt": ""
+  "name": "LABirintar Interactive Pitch Deck",
+  "description": "An interactive web-based pitch deck for LABirintar, an EdTech startup revolutionizing after-school programs in Brazil by creating a vibrant ecosystem for schools, educators, and families.",
+  "requestFramePermissions": []
 }
