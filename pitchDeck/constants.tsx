@@ -3,7 +3,7 @@
   - Color Palette:
     - Red: #ff595a
     - Orange: #ffa400
-    - Cream: #ffe9c9
+    - Cream: #efebe1
     - Lavender: #e6cbe4
     - Blue: #aec5e7
     - Dark Text: #2d3748
@@ -22,7 +22,7 @@ import { TargetIcon } from './components/icons/TargetIcon';
 export const COLORS = {
   red: '#ff595a',
   orange: '#ffa400',
-  cream: '#ffe9c9',
+  cream: '#efebe1',
   lavender: '#e6cbe4',
   blue: '#aec5e7',
   darkText: '#2d3748', // A dark gray for readability
