@@ -3,9 +3,11 @@ import { GoogleGenAI } from '@google/genai';
 import { ChatMessage } from '../types';
 import { AI_SYSTEM_INSTRUCTION, KNOWLEDGE_BASE_TEXT } from '../ai/knowledge';
 
-const ai = process.env.API_KEY ? new GoogleGenAI({ apiKey: process.env.API_KEY }) : null;
+// Safely access the API key to prevent crashing in browser environments
+const apiKey = typeof process !== 'undefined' && process.env ? process.env.API_KEY : undefined;
+const ai = apiKey ? new GoogleGenAI({ apiKey: apiKey }) : null;
 
-if (!process.env.API_KEY) {
+if (!apiKey) {
     console.warn("A variável de ambiente API_KEY não está configurada. O Assistente de IA não funcionará.");
 }
 
