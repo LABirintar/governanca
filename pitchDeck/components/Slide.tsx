@@ -19,8 +19,8 @@ const renderVisual = (visual: SlideContent['visuals']) => {
              playsInline
              className="absolute top-0 left-0 w-full h-full object-cover z-0"
            />
-           {/* The user wants a light background. This overlay provides it. */}
-           <div className={`absolute inset-0 bg-[${COLORS.cream}] opacity-80`} />
+           {/* Overlay to match other slides' container style */}
+           <div className="absolute inset-0 bg-white/70 backdrop-blur-sm" />
 
            <div className="relative z-10 w-full p-8">
              <h1
