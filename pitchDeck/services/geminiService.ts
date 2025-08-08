@@ -1,18 +1,9 @@
-
 import { GoogleGenAI, Chat } from '@google/genai';
-import { Audience, ChatMessage } from '../types';
+import { Audience } from '../types';
 
-// A chave da API deve ser colocada aqui para funcionar no ambiente do navegador.
-// ATENÇÃO: Não exponha chaves de API em repositórios públicos por segurança.
-// Use variáveis de ambiente em um ambiente de build real.
-const API_KEY = "SUA_CHAVE_API_AQUI";
-
-let ai: GoogleGenAI;
-if (API_KEY && API_KEY !== "SUA_CHAVE_API_AQUI") {
-    ai = new GoogleGenAI({ apiKey: API_KEY });
-} else {
-    console.warn("API_KEY não foi configurada. A funcionalidade do Gemini API estará desativada.");
-}
+// The API key is retrieved from the execution environment.
+// It's assumed that `process.env.API_KEY` is pre-configured and available.
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 
 const getSystemInstruction = (audience: Audience): string => {
@@ -32,8 +23,7 @@ const getSystemInstruction = (audience: Audience): string => {
 
 const chats = new Map<Audience, Chat>();
 
-const getChat = (audience: Audience): Chat | null => {
-    if (!ai) return null;
+const getChat = (audience: Audience): Chat => {
     if (!chats.has(audience)) {
         const newChat = ai.chats.create({
             model: 'gemini-2.5-flash',
@@ -48,15 +38,8 @@ const getChat = (audience: Audience): Chat | null => {
 
 
 export const runChat = async (message: string, audience: Audience): Promise<string> => {
-    if (!API_KEY || API_KEY === "SUA_CHAVE_API_AQUI") {
-        return "A chave de API do Gemini não está configurada. Para ativar o chat, por favor, adicione sua chave de API no arquivo `services/geminiService.ts`.";
-    }
-    
     try {
         const chat = getChat(audience);
-        if (!chat) {
-             return "O assistente de IA não pôde ser inicializado. Verifique a configuração da chave de API.";
-        }
         const response = await chat.sendMessage({ message });
         return response.text;
     } catch (error) {
