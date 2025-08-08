@@ -219,6 +219,15 @@ const Slide: React.FC<SlideProps> = ({ content }) => {
     };
   }, [content.id]); // Re-run animation when the slide ID changes
 
+  const gridLayoutClasses: { [count: number]: string } = {
+    1: 'md:grid-cols-1',
+    2: 'md:grid-cols-2',
+    3: 'md:grid-cols-3',
+  };
+  
+  const gridColsClass = content.dataPoints
+    ? gridLayoutClasses[Math.min(content.dataPoints.length, 3)] || 'md:grid-cols-3'
+    : '';
 
   return (
     <div className="min-h-screen w-full flex flex-col justify-center items-center p-4 sm:p-8 lg:p-12 bg-transparent">
@@ -232,7 +241,7 @@ const Slide: React.FC<SlideProps> = ({ content }) => {
         <p className={`text-center text-gray-700 mb-8 max-w-3xl mx-auto ${content.id === 'cover' ? 'text-2xl md:text-3xl font-bold' : 'text-lg md:text-xl'}`}>{content.keyMessage}</p>
         
         {content.dataPoints && (
-          <div className={`grid grid-cols-1 md:grid-cols-${Math.min(content.dataPoints.length, 3)} gap-6 my-8`}>
+          <div className={`grid grid-cols-1 ${gridColsClass} gap-6 my-8`}>
             {content.dataPoints.map((point, index) => (
               <div 
                 key={index} 
