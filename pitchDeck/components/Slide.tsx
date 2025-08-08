@@ -24,7 +24,8 @@ const renderVisual = (visual: SlideContent['visuals']) => {
 
            <div className="relative z-10 w-full p-8">
              <h1
-               className={`font-serif text-4xl md:text-5xl lg:text-6xl font-extrabold text-[${COLORS.darkText}] animate-fade-in max-w-4xl mx-auto`}
+               className="font-serif text-4xl md:text-5xl lg:text-6xl font-extrabold animate-fade-in max-w-4xl mx-auto"
+               style={{ color: COLORS.darkText }}
              >
                {mainText}
              </h1>
@@ -85,7 +86,7 @@ const renderVisual = (visual: SlideContent['visuals']) => {
     
     case 'testimonial':
       return (
-        <div className={`bg-[${COLORS.cream}] p-8 rounded-lg shadow-lg text-center`}>
+        <div className="p-8 rounded-lg shadow-lg text-center" style={{ backgroundColor: COLORS.cream }}>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
             {visual.content.stats.map((stat: { value: string, label: string}) => (
               <div key={stat.label} className="p-4 bg-white/50 rounded-lg">
@@ -103,7 +104,7 @@ const renderVisual = (visual: SlideContent['visuals']) => {
       return (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {visual.content.map((metric: { metric: string, value: string, description: string }) => (
-                <div key={metric.metric} className={`bg-[${COLORS.cream}] p-6 rounded-lg shadow-lg text-center`}>
+                <div key={metric.metric} className="p-6 rounded-lg shadow-lg text-center" style={{ backgroundColor: COLORS.cream }}>
                     <p className="text-4xl font-bold text-[#ff595a]">{metric.value}</p>
                     <h4 className="text-lg font-semibold text-[#2d3748] mt-2">{metric.metric}</h4>
                     <p className="text-sm text-gray-600 mt-1">{metric.description}</p>
@@ -114,7 +115,7 @@ const renderVisual = (visual: SlideContent['visuals']) => {
 
     case 'partners':
         return (
-            <div className={`bg-[${COLORS.cream}] p-8 rounded-lg shadow-lg`}>
+            <div className="p-8 rounded-lg shadow-lg" style={{ backgroundColor: COLORS.cream }}>
                 <div className="flex flex-wrap justify-center items-center gap-6">
                     {visual.content.map((partnerName: string) => (
                         <div key={partnerName} className="bg-white px-4 py-2 rounded-full shadow-md text-[#2d3748] font-semibold">
@@ -129,7 +130,7 @@ const renderVisual = (visual: SlideContent['visuals']) => {
         return (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
                 {visual.content.map((member: {name: string, role: string, image: string, bio: string}) => (
-                    <div key={member.name} className={`bg-[${COLORS.cream}] p-6 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300`}>
+                    <div key={member.name} className="p-6 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300" style={{ backgroundColor: COLORS.cream }}>
                         {member.image && <img src={member.image} alt={member.name} className="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-[#aec5e7]" />}
                         <h4 className="text-xl font-bold text-[#2d3748]">{member.name}</h4>
                         <p className="text-[#ff595a] font-semibold mb-2">{member.role}</p>
@@ -141,7 +142,7 @@ const renderVisual = (visual: SlideContent['visuals']) => {
     
     case 'funds':
         return (
-            <div className={`bg-[${COLORS.cream}] p-8 rounded-lg shadow-lg`}>
+            <div className="p-8 rounded-lg shadow-lg" style={{ backgroundColor: COLORS.cream }}>
                 <ResponsiveContainer width="100%" height={300}>
                     <PieChart>
                         <Pie data={visual.content} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={120} labelLine={false} label={({ name, percent }) => `${(percent * 100).toFixed(0)}%`}>
@@ -163,7 +164,7 @@ const renderVisual = (visual: SlideContent['visuals']) => {
         }
         
         return (
-            <div className={`bg-[${COLORS.cream}] p-8 rounded-lg shadow-lg`}>
+            <div className="p-8 rounded-lg shadow-lg" style={{ backgroundColor: COLORS.cream }}>
                 <ResponsiveContainer width="100%" height={300}>
                      <ComposedChart data={data} margin={{ top: 5, right: 20, left: 30, bottom: 5 }}>
                         <XAxis dataKey="name" stroke={COLORS.darkText} />
@@ -235,7 +236,8 @@ const Slide: React.FC<SlideProps> = ({ content }) => {
             {content.dataPoints.map((point, index) => (
               <div 
                 key={index} 
-                className={`text-center p-6 bg-[${COLORS.cream}]/50 rounded-xl shadow-md transition-all duration-700 ease-out ${visibleDataPoints.has(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+                className={`text-center p-6 rounded-xl shadow-md transition-all duration-700 ease-out ${visibleDataPoints.has(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+                style={{ backgroundColor: 'rgba(239, 235, 225, 0.5)' }}
               >
                 <div className="flex justify-center items-center mb-4 text-5xl h-16">{point.icon}</div>
                 <h3 className="text-xl font-semibold text-[#2d3748]">{point.text}</h3>
